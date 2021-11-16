@@ -56,7 +56,7 @@ Channel object with only the bare minimum of fields. Sent in for example interac
 
 ###### Text and News Channel
 
-Shared structure of a text- and news guild channel.
+Shared structure of both text and news guild channels.
 
 | Field                          | Type                                                                      | Description                                                                                                                                                                                     |
 |--------------------------------|---------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -88,7 +88,7 @@ Shared structure of a text- and news guild channel.
 | recipients          | array of [user](#DOCS_RESOURCES_USER/user-object) objects | the recipients of the DM                                                                                                   |
 | last_pin_timestamp? | ?ISO8601 timestamp                                        | when the last pinned message was pinned. This may be `null` in events such as `GUILD_CREATE` when a message is not pinned. |
 
-###### Group Channel
+###### Group DM Channel
 
 | Field               | Type                                                      | Description                                                                                                                |
 |---------------------|-----------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
@@ -103,6 +103,8 @@ Shared structure of a text- and news guild channel.
 | last_pin_timestamp? | ?ISO8601 timestamp                                        | when the last pinned message was pinned. This may be `null` in events such as `GUILD_CREATE` when a message is not pinned. |
 
 ###### Thread Channel
+
+Shared structure for public, private, and announcement threads.
 
 | Field                  | Type                                                                       | Description                                                                                                                                                                                     |
 |------------------------|----------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -140,7 +142,7 @@ Shared structure of a text- and news guild channel.
 
 ###### Category and Store Channel
 
-Shared structure for a category- and store channel that both do not allow sending any messages or connecting over VoIP.
+Shared structure for category and store channels; both do not allow sending any messages or connecting over VoIP.
 
 | Field                 | Type                                                                   | Description                                                                                                               |
 |-----------------------|------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
