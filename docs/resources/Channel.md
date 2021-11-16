@@ -4,6 +4,41 @@
 
 Represents a guild or DM channel within Discord - including stores, categories and threads.
 
+###### Channel Types
+
+> warn
+> Type 10, 11 and 12 are only available in API v9 and above.
+
+| Type                    | ID  | Description                                                                                                                                          |
+| ----------------------- | --- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GUILD_TEXT              | 0   | a text channel within a server                                                                                                                       |
+| DM                      | 1   | a direct message between users                                                                                                                       |
+| GUILD_VOICE             | 2   | a voice channel within a server                                                                                                                      |
+| GROUP_DM                | 3   | a direct message between multiple users                                                                                                              |
+| GUILD_CATEGORY          | 4   | an [organizational category](https://support.discord.com/hc/en-us/articles/115001580171-Channel-Categories-101) that contains up to 50 channels      |
+| GUILD_NEWS              | 5   | a channel that [users can follow and crosspost into their own server](https://support.discord.com/hc/en-us/articles/360032008192)                    |
+| GUILD_NEWS_THREAD       | 10  | a temporary sub-channel within a GUILD_NEWS channel                                                                                                  |
+| GUILD_PUBLIC_THREAD     | 11  | a temporary sub-channel within a GUILD_TEXT channel                                                                                                  |
+| GUILD_PRIVATE_THREAD    | 12  | a temporary sub-channel within a GUILD_TEXT channel that is only viewable by those invited and those with the MANAGE_THREADS permission              |
+| GUILD_STAGE_VOICE       | 13  | a voice channel for [hosting events with an audience](https://support.discord.com/hc/en-us/articles/1500005513722)                                   |
+| GUILD_DIRECTORY         | 14  | the channel in a [hub](https://support.discord.com/hc/en-us/articles/4406046651927-Discord-Student-Hubs-FAQ) containing the listed servers           |
+| GUILD_FORUM\*           | 15  | (still in development) a channel that can only contain threads                                                                                       |
+
+\* The `GUILD_FORUM` channel type is still in active development. Avoid implementing any features that are not documented here, since they are subject to change without notice!
+
+###### Video Quality Modes
+
+| Mode | Value | Description                                         |
+| ---- | ----- | --------------------------------------------------- |
+| AUTO | 1     | Discord chooses the quality for optimal performance |
+| FULL | 2     | 720p                                                |
+
+###### Channel Flags
+
+| Flag                                   | Value  | Description                                                                       |
+|----------------------------------------|--------|-----------------------------------------------------------------------------------|
+| PINNED                                 | 1 << 1 | this thread is pinned to the top of its parent forum channel                      |
+
 #### Channel Structures
 
 The channel object itself can be split into several structures depending on its [channel type](#DOCS_RESOURCES_CHANNEL/channel-object-channel-types), think of a general channel object from the API as a union of all of these structures with fields that not all structures share being optional.
@@ -93,41 +128,6 @@ Shared structure for a category- and store channel that both do not allow sendin
 | name                  | string                                                                 | the name of the channel (1-100 characters)                                                                                |
 | nsfw                  | boolean                                                                | whether the channel is nsfw                                                                                               |
 | parent_id             | ?snowflake                                                             | always null for category- and store channels                                                                                         |
-
-###### Channel Types
-
-> warn
-> Type 10, 11 and 12 are only available in API v9 and above.
-
-| Type                    | ID  | Description                                                                                                                                          |
-| ----------------------- | --- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| GUILD_TEXT              | 0   | a text channel within a server                                                                                                                       |
-| DM                      | 1   | a direct message between users                                                                                                                       |
-| GUILD_VOICE             | 2   | a voice channel within a server                                                                                                                      |
-| GROUP_DM                | 3   | a direct message between multiple users                                                                                                              |
-| GUILD_CATEGORY          | 4   | an [organizational category](https://support.discord.com/hc/en-us/articles/115001580171-Channel-Categories-101) that contains up to 50 channels      |
-| GUILD_NEWS              | 5   | a channel that [users can follow and crosspost into their own server](https://support.discord.com/hc/en-us/articles/360032008192)                    |
-| GUILD_NEWS_THREAD       | 10  | a temporary sub-channel within a GUILD_NEWS channel                                                                                                  |
-| GUILD_PUBLIC_THREAD     | 11  | a temporary sub-channel within a GUILD_TEXT channel                                                                                                  |
-| GUILD_PRIVATE_THREAD    | 12  | a temporary sub-channel within a GUILD_TEXT channel that is only viewable by those invited and those with the MANAGE_THREADS permission              |
-| GUILD_STAGE_VOICE       | 13  | a voice channel for [hosting events with an audience](https://support.discord.com/hc/en-us/articles/1500005513722)                                   |
-| GUILD_DIRECTORY         | 14  | the channel in a [hub](https://support.discord.com/hc/en-us/articles/4406046651927-Discord-Student-Hubs-FAQ) containing the listed servers           |
-| GUILD_FORUM\*           | 15  | (still in development) a channel that can only contain threads                                                                                       |
-
-\* The `GUILD_FORUM` channel type is still in active development. Avoid implementing any features that are not documented here, since they are subject to change without notice!
-
-###### Video Quality Modes
-
-| Mode | Value | Description                                         |
-| ---- | ----- | --------------------------------------------------- |
-| AUTO | 1     | Discord chooses the quality for optimal performance |
-| FULL | 2     | 720p                                                |
-
-###### Channel Flags
-
-| Flag                                   | Value  | Description                                                                       |
-|----------------------------------------|--------|-----------------------------------------------------------------------------------|
-| PINNED                                 | 1 << 1 | this thread is pinned to the top of its parent forum channel                      |
 
 ###### Example Guild Text Channel
 
