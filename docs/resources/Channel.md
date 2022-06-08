@@ -274,23 +274,6 @@ Bots can post or publish messages in this type of channel if they have the prope
 }
 ```
 
-###### Store Channel
-
-Bots can neither send nor read messages in this channel type (as it is a store page).
-
-```json
-{
-  "id": "41771983423143937",
-  "guild_id": "41771983423143937",
-  "name": "buy dota-2",
-  "type": 6,
-  "position": 0,
-  "permission_overwrites": [],
-  "nsfw": false,
-  "parent_id": null
-}
-```
-
 ###### Thread Channel
 
 [Threads](#DOCS_TOPICS_THREADS) can be either `archived` or `active`.  Archived threads are generally immutable.  To send a message or add a reaction, a thread must first be unarchived.  The API will helpfully automatically unarchive a thread when sending a message in that thread.
